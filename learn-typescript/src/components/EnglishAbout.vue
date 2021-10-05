@@ -1,0 +1,1 @@
+<template>这是一个英语关于页面</template>

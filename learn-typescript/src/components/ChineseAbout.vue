@@ -1,0 +1,1 @@
+<template>这是一个中文的关于页面</template>

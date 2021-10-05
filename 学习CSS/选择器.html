@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>选择器</title>
+    <style>
+        p {
+            color: aqua;
+        }
+
+        .redP {
+            color: red;
+            font-style: italic;
+            text-align: center;
+            text-decoration: underline;
+            text-indent: 10px;
+        }
+
+        div {
+            height: 256px;
+            width: 256px;
+        }
+
+        .redDiv {
+            background-color: red;
+        }
+
+        .greenDiv {
+            background-color: green;
+        }
+
+        #oneBlue {
+            color: blue;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-weight: 400;
+        }
+
+        * {
+            font-size: 20px;
+            font-family: "微软雅黑";
+            color: black;
+            line-height: 30px;
+        }
+
+        ol #need {
+            font-family: "宋体";
+        }
+
+        div>ol {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <p>标签选择器</p>
+    <p class="redP">类选择器</p>
+    <div class=redDiv></div>
+    <div class=greenDiv></div>
+    <div class=redDiv></div>
+    <p id="oneBlue">ID选择器</p>
+    <p>通配符选择器</p>
+    <h1>不加粗的标题</h1>
+    <ol>
+        <li id="need">后代选择器</li>
+        <li>后代选择器</li>
+    </ol>
+    <div>
+        <ol>
+            子元素选择器
+            <li>子元素选择器</li>
+        </ol>
+    </div>
+</body>
+
+</html>

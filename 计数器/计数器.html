@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="计数器.css">
+    <title>计数器</title>
+</head>
+
+<body>
+    <div id="counter">
+        <div class="input-num">
+            <input type="button" value="-" v-on:click="Sub">
+            <span v-text="num"></span>
+            <input type="button" value="+" v-on:click="Add">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="计数器.js"></script>
+</body>
+
+</html>

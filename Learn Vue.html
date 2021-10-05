@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>学习Vue</title>
+</head>
+
+<body>
+    <div id="text" v-text="message">
+    </div>
+    <div id="on">
+        <input type="button" value="按钮" v-on:click="Eject">
+        <input type="text" v-on:keyup.enter="SayHi" v-model="name">
+    </div>
+    <div id="vFor">
+        <ul>
+            <li v-for="(item, index) in items">
+                这是第{{index}}个项目，内容为：{{item}}。
+            </li>
+        </ul>
+    </div>
+    <div id="jokes">
+        <p v-text="joke" v-on:click="GetJoke"></p>
+    </div>
+    <script src="Vue.js"></script>
+    <script>
+        var text = new Vue({
+            el: "#text",
+            data: { message: "Hello World!" }
+        })
+        var vOn = new Vue({
+            el: "#on",
+            data:
+            {
+                name: ""
+            },
+            methods: {
+                Eject: function () {
+                    alert("按下了按钮。")
+                },
+                SayHi: function () {
+                    alert(`你好${this.name}`)
+                }
+            }
+        })
+        var vFor = new Vue(
+            {
+                el: "#vFor",
+                data:
+                {
+                    items: ["A", "B", "C", "D", "E", "F"]
+                }
+            }
+        )
+    </script>
+    <script src="Axios.js"></script>
+    <script>
+        var jokeApp = new Vue({
+            el: jokes,
+            data: {
+                joke: "这是一个笑话"
+            },
+            methods: {
+                GetJoke: function () {
+                    var that = this;
+                    axios.get("https://autumnfish.cn/api/joke").then(function (response) {
+                        that.joke = response.data;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

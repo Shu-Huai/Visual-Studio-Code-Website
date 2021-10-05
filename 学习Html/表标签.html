@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>表标签</title>
+</head>
+
+<body>
+    <table align="center" border="1px" cellpadding="5px" cellspacing="0" width="500px" height="250px">
+        <thead>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td colspan="2">1</td>
+                <td>3</td>
+            </tr>
+            <tr align="center">
+                <td rowspan="2">4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr align="center">
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr align="center">
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+    </ul>
+    <ol>
+        <li>有序列表1</li>
+        <li>有序列表2</li>
+        <li>有序列表3</li>
+    </ol>
+    <dl>
+        <dt>自定义列表头</dt>
+        <dd>自定义列表1</dd>
+        <dd>自定义列表2</dd>
+        <dd>自定义列表3</dd>
+    </dl>
+    <form action="基础标签.html" method="GET" name="Test">
+        <table align="center" cellspacing="5px">
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" maxlength="6" name="userName"></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="passWord"></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <label for="male">男</label><input type="radio" name="gender" id="male" value="男" checked="checked">
+                    <label for="female">女</label><input type="radio" name="gender" id="female" value="女">
+                </td>
+            </tr>
+            <tr>
+                <td>地区：</td>
+                <td>
+                    <select name="area">
+                        <option selected="selected">上海</option>
+                        <option>北京</option>
+                        <option>武汉</option>
+                        <option>广州</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>需求：</td>
+                <td>
+                    <label for="giveHelp">提供帮助</label><input type="checkbox" name="need" id="giveHelp" value="提供帮助">
+                    <label for="needHelp">获取帮助</label><input type="checkbox" name="need" id="needHelp" value="获取帮助">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="获取验证码" onclick="Send()">
+                    <script>
+                        function Send() {
+                            alert("已发送验证码。");
+                        }
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>照片：</td>
+                <td><input type="file" value="上传照片" name="photo"></td>
+            </tr>
+            <tr>
+                <td>个人介绍：</td>
+                <td><textarea name="introduce" cols="32" rows="4"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="checkbox" name="agree" id="agree"><label for="agree">我同意<a href=基础标签.html>注册条款</a></label></td>
+            </tr>
+            <tr>
+                <td><input type="reset" value="重置"></td>
+                <td><input type="submit" value="确认提交"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

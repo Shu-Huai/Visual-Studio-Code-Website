@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>待办事项</title>
+    <link rel="stylesheet" href="待办事项.css">
+</head>
+
+<body>
+    <section id="todoApp">
+        <header class="header">
+            <h1>待办事项</h1>
+            <input v-model="inputValue" @keyup.enter="Add" input autofocus="autofocus" autocomplete="off"
+                placeholder="请输入事项" class="newTodo">
+        </header>
+        <section class="main">
+            <ul class="todo-list">
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index">{{ index+1 }}.</span>
+                        <label>{{ item }}</label>
+                        <button class="destroy" @click="Remove(index)"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <footer class="footer">
+            <span class="todo-count">
+                <strong>{{list.length}}</strong>项待办
+            </span>
+            <button class="clear-completed" @click="Clear">
+                清除全部
+            </button>
+        </footer>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="待办事项.js"></script>
+</body>
+
+</html>
