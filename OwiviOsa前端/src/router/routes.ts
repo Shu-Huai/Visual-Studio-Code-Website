@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/promise-function-async */
 import { RouteRecordRaw } from 'vue-router'
 
 const mainRoutes: RouteRecordRaw[] = [
@@ -7,7 +6,7 @@ const mainRoutes: RouteRecordRaw[] = [
         path: '/',
         component: () => import('../views/home.vue'),
         meta: {
-            title: 'Home',
+            title: "主页",
             requiresAuth: true // 需要登陆才能访问
         }
     },
@@ -31,7 +30,7 @@ const routes: RouteRecordRaw[] = [
         path: '/login',
         component: () => import('../views/login.vue'),
         meta: {
-            title: 'Sign In'
+            title: "登录"
         }
     },
     {
@@ -39,7 +38,7 @@ const routes: RouteRecordRaw[] = [
         path: '/register',
         component: () => import('../views/register.vue'),
         meta: {
-            title: 'Register'
+            title: "注册"
         }
     },
     // render layout

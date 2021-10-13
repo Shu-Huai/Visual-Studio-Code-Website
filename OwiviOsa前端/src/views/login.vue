@@ -1,23 +1,25 @@
 <template>
-    <img id="logo" name="logo" src="https://www.naiveui.com/assets/naivelogo.93278402.svg" alt="logo" />
-    <p id="title">登录</p>
-    <n-form id="form" :show-label="false" :model="formValue" :rules="rules" ref="formRef">
-        <n-form-item label="用户名" path="username">
-            <n-input v-model:value="formValue.username" placeholder="用户名" />
-        </n-form-item>
-        <n-form-item label="密码" path="password">
-            <n-input v-model:value="formValue.password" placeholder="密码" @keyup.enter="PostLogin" />
-        </n-form-item>
-        <n-form-item>
-            <n-checkbox v-model:checked="needSave">记住我</n-checkbox>
-        </n-form-item>
-        <n-form-item>
-            <n-button v-on:click="PostLogin" attr-type="button">进入OwiviOsa</n-button>
-        </n-form-item>
-    </n-form>
-    <div>
-        还没有账号？
-        <a id="registerLink" href="/register" v-on:click="GoRegister">点我注册</a>
+    <div style="text-align: center;">
+        <img id="logo" name="logo" src="https://www.naiveui.com/assets/naivelogo.93278402.svg" alt="logo" />
+        <p id="title">登录</p>
+        <n-form id="form" :show-label="false" :model="formValue" :rules="rules" ref="formRef">
+            <n-form-item label="用户名" path="username">
+                <n-input class="roundInput" v-model:value="formValue.username" placeholder="用户名" />
+            </n-form-item>
+            <n-form-item label="密码" path="password">
+                <n-input class="roundInput" v-model:value="formValue.password" placeholder="密码" @keyup.enter="PostLogin" type="password" />
+            </n-form-item>
+            <n-form-item>
+                <n-checkbox v-model:checked="needSave">记住我</n-checkbox>
+            </n-form-item>
+            <n-form-item>
+                <n-button class="roundButton" type="primary" v-on:click="PostLogin" attr-type="button">进入OwiviOsa</n-button>
+            </n-form-item>
+        </n-form>
+        <div>
+            还没有账号？
+            <a id="registerLink" href="/register">点我注册</a>
+        </div>
     </div>
 </template>
 <script lang="ts" setup>
@@ -65,7 +67,6 @@ function GetCookie(): void {
     if (document.cookie.length > 0) {
         let cookie: string[] = document.cookie.split("; ");
         cookie.forEach(function (element): void {
-            console.log(element)
             let result: string[] = element.split("=");
             if (result[0] === "username") {
                 formValue.value.username = result[1];
@@ -81,7 +82,6 @@ function PostLogin(): void {
         if (!errors) {
             axios({
                 method: "post",
-                baseURL: "http://s3.s100.vip:35881/",
                 url: "/login",
                 data: qs.stringify({
                     username: formValue.value.username,
@@ -97,11 +97,16 @@ function PostLogin(): void {
                 setTimeout(() => { router.push({ name: "home" }); }, 1000); // 在本地运行时为了先显示登录成功的消息后跳转页面的等待，后期部署删除
             }).catch(error => {
                 switch (error.message) {
-                    case "Request failed with status code 401":
-                        message.error("登录失败，用户名或密码错误。");
-                        break;
+                    case "Request failed with status code 404":
                     case "Network Error":
                         message.error("登录失败，网络错误。");
+                        break;
+                    case "Request failed with status code 401":
+                        switch (error.response.data.detail) {
+                            case "Incorrect username or password":
+                                message.error("登录失败，用户名或密码错误。");
+                                break;
+                        }
                         break;
                     default:
                         message.error("登录失败。");
@@ -113,15 +118,11 @@ function PostLogin(): void {
         }
     })
 }
-function GoRegister(): void {
-    router.push({ name: "register" });
-}
 </script>
 <style>
 body {
-    text-align: center;
-    padding-top: 150px;
-    background-image: url("../assets/背景.png");
+        padding-top: 150px;
+        background-image: url("../assets/背景.png");
 }
 #logo {
     width: 100px;
@@ -134,13 +135,13 @@ body {
     display: inline-block;
     width: 300px;
 }
-.n-input {
+.roundInput {
     margin-top: 20px;
     width: 300px;
     padding: 5px;
     border-radius: 20px;
 }
-.n-button {
+.roundButton {
     padding: 20px;
     color: white;
     width: 300px;
